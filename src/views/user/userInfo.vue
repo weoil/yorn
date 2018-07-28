@@ -1,27 +1,24 @@
 <template>
-  <div class="home">
-    <Swiper />
-  </div>
+    <div class="userInfo">
+
+    </div>
 </template>
 
 <script>
-import Swiper from "@/components/swiper/swiper"
 export default {
-  name: "home",
+  name: "userInfo",
   props: {},
   data() {
     return {}
   },
   methods: {},
-  components: {
-    Swiper
-  },
+  components: {},
   computed: {},
   mounted() {}
 }
 </script>
 
 <style scoped lang="css">
-.home {
+.userInfo {
 }
 </style>

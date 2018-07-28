@@ -10,7 +10,11 @@
   "dependencies": {
     "vue": "^2.5.16",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "axios": "^0.18.0",
+    "iview": "^2.14.3",
+    "lodash": "^4.17.10",
+    "swiper": "^4.3.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.7",

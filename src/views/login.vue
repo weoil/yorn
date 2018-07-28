@@ -1,27 +1,24 @@
 <template>
-  <div class="home">
-    <Swiper />
+  <div class="login">
+
   </div>
 </template>
 
 <script>
-import Swiper from "@/components/swiper/swiper"
 export default {
-  name: "home",
+  name: "login",
   props: {},
   data() {
     return {}
   },
   methods: {},
-  components: {
-    Swiper
-  },
+  components: {},
   computed: {},
   mounted() {}
 }
 </script>
 
-<style scoped lang="css">
-.home {
+<style scoped lang="less">
+.login {
 }
 </style>
