@@ -6,6 +6,7 @@
           <div class="logo">
             <slot></slot>
           </div>
+          <slot v-if="min" name="right" class="right"></slot>
           <div class="down" v-show="min" @click="cshow=!cshow">
             <Icon type="navicon-round"></Icon>
           </div>
@@ -15,6 +16,7 @@
             <base-menu-item :data="data"></base-menu-item>
           </div>
         </transition>
+        <slot v-if="!min" name="right" class="right"></slot>
       </div>
     </Menu>
   </div>
@@ -64,6 +66,10 @@ export default {
 
 <style scoped lang="less">
 .baseMenu {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  margin-bottom: 20px;
 }
 .container {
   margin: 0 auto;
@@ -72,11 +78,14 @@ export default {
 .container,
 .header {
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
 }
 .header {
+  justify-content: space-between;
   padding: 0 15px;
+  flex: 1;
 }
+
 .vertical {
   flex-direction: column;
   justify-content: center;
@@ -86,11 +95,14 @@ export default {
     align-items: center;
     /* border-bottom: 1px solid #ccc; */
   }
-  .nav li {
-    border-bottom: 1px solid #ccc;
-  }
   .nav {
     // overflow: hidden;
+    position: relative;
+    z-index: 9;
+    background-color: #fff;
+    li {
+      border-bottom: 1px solid #ccc;
+    }
   }
   .nav-enter-active,
   .nav-leave-active {

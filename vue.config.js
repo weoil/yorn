@@ -1,19 +1,10 @@
-const path = require("path")
-function resolve(dir) {
-  return path.join(__dirname, dir)
-}
+// vue.config.js
 module.exports = {
-  configureWebpack: {
-    resolve: {
-      alias: {
-        "@": resolve("src")
+  css: {
+    loaderOptions: {
+      sass: {
+        data: `@import "@/assets/base.scss";`
       }
     }
   }
-  // pluginOptions: {
-  //   "style-resources-loader": {
-  //     // preProcessor: "less"
-  //     patterns: [resolve("./assets/base.less")]
-  //   }
-  // }
 }
