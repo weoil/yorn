@@ -1,6 +1,6 @@
 <template>
   <div class="baseMenu">
-    <Menu :mode="min?'vertical':'horizontal'" :style="`width:100%;height:${height}px;`" accordion>
+    <Menu :mode="min?'vertical':'horizontal'" :style="`width:100%;height:${height}px;`" accordion @on-select="select">
       <div class="container" :class="min?'vertical':''" :style="`max-width:${width}px`">
         <div class="header">
           <div class="logo">
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import baseMenuItem from "./baseMenuItem"
+import baseMenuItem from "./baseMenuItem";
 export default {
   name: "baseMenu",
   props: {
@@ -45,12 +45,16 @@ export default {
     return {
       min: false,
       cshow: false
-    }
+    };
   },
   methods: {
     query() {
-      this.min = window.innerWidth < this.minWidth
-      this.cshow = false
+      this.min = window.innerWidth < this.minWidth;
+      this.cshow = false;
+    },
+    select(name) {
+      if (this.min) this.cshow = false;
+      this.$emit("select", name);
     }
   },
   components: {
@@ -58,10 +62,10 @@ export default {
   },
   computed: {},
   mounted() {
-    this.query()
-    window.addEventListener("resize", this._.throttle(this.query, 400))
+    this.query();
+    window.addEventListener("resize", this._.throttle(this.query, 400));
   }
-}
+};
 </script>
 
 <style scoped lang="less">

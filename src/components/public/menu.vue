@@ -1,22 +1,22 @@
 <template>
-    <base-menu :data="menuData" class="menu" :height="height">
-        <div class="header">
-            Yorn
+  <base-menu :data="menuData" class="menu" :height="height" @select="select">
+    <div class="header">
+      Yorn
 
-        </div>
-        <div slot="right" class="right">
-            <div class="search" :style="``">
-                <Input placeholder="Enter something..." icon="ios-search" />
-            </div>
-            <user-top></user-top>
+    </div>
+    <div slot="right" class="right">
+      <div class="search" :style="``">
+        <Input placeholder="在这里搜索你感兴趣的内容" icon="ios-search" />
+      </div>
+      <user-top></user-top>
 
-        </div>
-    </base-menu>
+    </div>
+  </base-menu>
 </template>
 
 <script>
-import baseMenu from "@/components/baseMenu/baseMenu"
-import userTop from "@/components/user/userTop"
+import baseMenu from "@/components/baseMenu/baseMenu";
+import userTop from "@/components/user/userTop";
 
 export default {
   name: "l-menu",
@@ -25,52 +25,100 @@ export default {
     return {
       menuData: [
         {
-          label: "Home",
-          name: "Home"
+          label: "主页",
+          name: ""
         },
         {
-          label: "Image",
+          label: "图片",
           name: "ilist",
           children: [
             {
-              label: "GirlFriend",
-              name: "ilist/rqny/1"
+              label: "国产自拍",
+              name: "ilist/gczp/1"
+            },
+            {
+              label: "亚洲美图",
+              name: "ilist/yz/1"
+            },
+            {
+              label: "欧美美图",
+              name: "ilist/om/1"
+            },
+            {
+              label: "模特写真",
+              name: "ilist/xz/1"
+            },
+            {
+              label: "动漫CG",
+              name: "ilist/dm/1"
             }
           ]
         },
         {
-          label: "Video",
-          name: "vlist"
+          label: "影片",
+          name: "vlist",
+          children: [
+            {
+              label: "国产自拍",
+              name: "vlist/gczp/1"
+            },
+            {
+              label: "岛国物语",
+              name: "vlist/porn/1"
+            }
+          ]
         },
         {
-          label: "Text",
+          label: "文字",
           name: "tlist",
           children: [
             {
+              label: "GirlFriend",
+              name: "tlist/rqny/1"
+            },
+            {
               label: "Incest",
               name: "tlist/llmq/1"
+            },
+            {
+              label: "SchoolTeacher",
+              name: "tlist/xyss/1"
+            },
+            {
+              label: "Affair",
+              name: "tlist/shqy/1"
+            },
+            {
+              label: "Rape",
+              name: "tlist/yyqj/1"
             }
           ]
         }
       ],
       searchWidth: 0,
       height: 60
+    };
+  },
+  methods: {
+    select(name) {
+      this.$router.push(`/${name}`);
     }
   },
-  methods: {},
   components: {
     baseMenu,
     userTop
   },
   computed: {},
   mounted() {}
-}
+};
 </script>
 
 <style scoped lang="scss">
 .menu {
   .header {
     display: flex;
+    font-size: 30px;
+    color: $textActiveColor;
   }
   .right {
     display: flex;

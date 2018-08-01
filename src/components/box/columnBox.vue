@@ -27,13 +27,13 @@ export default {
     }
   },
   data() {
-    return {}
+    return {};
   },
   methods: {},
   components: {},
   computed: {},
   mounted() {}
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -42,6 +42,7 @@ export default {
 .title {
   --bcolor: #fff;
   position: sticky;
+  z-index: 3;
   top: 60px;
   height: 40px;
   line-height: 40px;
@@ -52,7 +53,6 @@ export default {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   // position: relative;
-  box-shadow: 1px 2px 1px var(--bcolor);
   &::after,
   &::before {
     content: "";
@@ -80,11 +80,6 @@ export default {
     flex: 1;
     margin: 5px;
     width: 50%;
-    &::after {
-      content: "";
-      display: block;
-      padding-top: 100%;
-    }
   }
 }
 .media {

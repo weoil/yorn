@@ -1,7 +1,8 @@
 <template>
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Slide 1</div>
+      <slot></slot>
+      <!-- <div class="swiper-slide">Slide 1</div>
       <div class="swiper-slide">Slide 2</div>
       <div class="swiper-slide">Slide 3</div>
       <div class="swiper-slide">Slide 1</div>
@@ -9,7 +10,7 @@
       <div class="swiper-slide">Slide 3</div>
       <div class="swiper-slide">Slide 1</div>
       <div class="swiper-slide">Slide 2</div>
-      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 3</div> -->
     </div>
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next">
@@ -23,15 +24,15 @@
 </template>
 
 <script>
-import Swiper from "swiper"
-import "swiper/dist/css/swiper.min.css"
+import Swiper from "swiper";
+import "swiper/dist/css/swiper.min.css";
 export default {
   name: "Swiper",
   props: {},
   data() {
     return {
       swiper: null
-    }
+    };
   },
   methods: {
     initSwiper() {
@@ -50,15 +51,15 @@ export default {
           dynamicBullets: true,
           clickable: true
         }
-      })
+      });
     }
   },
   components: {},
   computed: {},
   mounted() {
-    this.initSwiper()
+    this.initSwiper();
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -78,6 +79,11 @@ export default {
 .swiper-slide {
   background-color: antiquewhite;
   width: 50%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
   @media screen and (max-width: 996px) {
     width: 100%;
   }

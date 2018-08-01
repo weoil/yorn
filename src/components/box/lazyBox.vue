@@ -1,17 +1,17 @@
 <template>
-    <div class="lazyBox">
-        <template v-if="show||placeholder">
-            <img :src="show?image:placeholder" :alt="alt">
-        </template>
-        <template v-else>
-            <div class="planceholder">
-                <span>
-                    <Icon type="ios-loading" />
-                </span>
-            </div>
-        </template>
+  <div class="lazyBox" :style="`--maxheight:${maxHeight}px`">
+    <template v-if="show||placeholder">
+      <img :src="show?image:placeholder" :alt="alt">
+    </template>
+    <template v-else>
+      <div class="planceholder">
+        <span>
+          loading
+        </span>
+      </div>
+    </template>
 
-    </div>
+  </div>
 </template>
 
 <script>
@@ -26,7 +26,7 @@ export default {
       type: String
     },
     show: {
-      type: boolean,
+      type: Boolean,
       default: false
     },
     alt: {
@@ -34,32 +34,41 @@ export default {
     }
   },
   data() {
-    return {}
+    return {
+      maxHeight: 0
+    };
   },
   methods: {},
   components: {},
   computed: {},
-  mounted() {}
-}
+  mounted() {
+    this.maxHeight = window.innerHeight - 100;
+  }
+};
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .lazyBox {
-  height: 100%;
+  --maxheight: 400px;
+  width: 100%;
+  // height: 100%;
 }
 img {
   height: 100%;
-  width: 100%;
+  max-height: var(--maxheight);
+  max-width: 100%;
   object-fit: cover;
 }
 .planceholder {
-  height: 100%;
+  height: 200px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  color: black;
 }
 .planceholder > span {
   font-size: 30px;
-  animation: rotate 1s linear infinite;
+  animation: rotate 4s linear infinite;
 }
 @keyframes rotate {
   0% {
