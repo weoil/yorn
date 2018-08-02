@@ -3,7 +3,7 @@
     <div class="list">
       <warpper :name="'imageList'+type" @bottom="load" :loading="loading">
         <div class="col-6 sm-12 xs-24 item hover" v-for="(item,index) in data" :key="index" @click="itemClick(item.id)">
-          <item-box :image="item.poster" :title="item.title">
+          <item-box :image="item.poster" :title="item.title" class="item-box">
             <div>
               {{item.date}}
             </div>
@@ -66,11 +66,10 @@ export default {
     // waterFallWarpper,
     Loading
   },
+
   computed: {},
   beforeMount() {},
-  mounted() {
-    // this.$sr.reveal(".item", { duration: 200 });
-  }
+  mounted() {}
 };
 </script>
 
@@ -78,6 +77,9 @@ export default {
 .imageList {
   // overflow: hidden;
 }
+// .sr .item {
+//   visibility: hidden;
+// }
 .item {
   padding: 5px;
 }

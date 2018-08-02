@@ -8,6 +8,11 @@ export default [
     component: () => import("@/views/index.vue"),
     children: [
       {
+        path: "/search/:str/:page",
+        component: () => import("@/views/search.vue"),
+        props: true
+      },
+      {
         name: "home",
         path: "/",
         component: () => import("@/views/home.vue")
@@ -73,4 +78,4 @@ export default [
       }
     ]
   }
-]
+];

@@ -70,6 +70,11 @@ export default {
 .title {
   font-size: 18px;
   padding: 5px;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .info {
   padding: 5px;

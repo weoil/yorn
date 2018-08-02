@@ -19,8 +19,8 @@ const mutations = {
   setHome(state, payload) {
     state.home = payload;
   },
-  setSearch(state, { search, page, data }) {
-    Vue.set(state.search, search + page, data);
+  setSearch(state, { str, page, data }) {
+    Vue.set(state.search, str + page, data);
   }
 };
 const actions = {
@@ -55,13 +55,15 @@ const actions = {
       return Promise.resolve(r.data);
     }
   },
-  async search({ commit, state }, { search, page }) {
-    search = encodeURIComponent(search);
-    if (state.search[search + page]) {
-      return Promise.resolve(state.search[search + page]);
+  async search({ commit, state }, { str, page }) {
+    console.log(str + page);
+    console.log(state.search[str + page]);
+    if (state.search[str + page]) {
+      return Promise.resolve(state.search[str + page]);
     } else {
-      let r = await $.get(`/search/${search}/${page}`);
-      commit("setSearch", { search, page, data: r.data });
+      let r = await $.get(`/search/${str}/${page}`);
+      commit("setSearch", { str, page, data: r.data });
+      return Promise.resolve(r.data);
     }
   }
 };

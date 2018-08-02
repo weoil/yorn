@@ -6,13 +6,16 @@ import store from "@/store";
 import lodash from "lodash";
 import xhr from "@/util/xhr";
 import sr from "scrollreveal";
+import dayjs from "dayjs";
 import "@/util/directive";
 import "@/assets/iview.less";
-// import "@/util/mock.js";
+import "@/util/mock.js";
 Vue.config.productionTip = false;
 Vue.use(iView);
 Vue.prototype.$_store = store;
 Vue.prototype.$_router = router;
+Vue.prototype.$format = (date, format = "YYYY-MM-DD hh:mm") =>
+  dayjs(date).format(format);
 Vue.prototype.$xhr = xhr;
 Vue.prototype._ = lodash;
 Vue.prototype.$sr = sr();

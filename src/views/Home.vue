@@ -1,16 +1,19 @@
 <template>
   <div class="home" v-if="!loading">
-    <Swiper>
-      <div class="swiper-slide col-12 xs-24 sm-24" v-for="(item,index) in home.image" :key="index">
-        <img :src="item.poster" :alt="item.title">
-        <div class="title">
-          {{item.title}}
+    <div class="swiper">
+      <Swiper>
+        <div class="swiper-slide col-12 xs-24 sm-24" v-for="(item,index) in home.image" :key="index" @click="$router.push(`/iitem/${item.id}`)">
+          <img :src="item.poster" :alt="item.title">
+          <div class="title ">
+            {{item.title}}
+          </div>
         </div>
-      </div>
-    </Swiper>
+      </Swiper>
+    </div>
+
     <div class="warpper" :key="'home'">
       <column-box :title="type==='videoGc'?'国产自拍':'岛国风情'" class="video" color="#2db7f5" v-for="(item , type) in home.video" :key="type">
-        <div v-for="(value , index) in item" :key="index">
+        <div v-for="(value , index) in item" :key="index" class="item">
           <item-box :image="value.poster||value.cover" :title="value.title">
             <div class="info">
               {{value.date}}
@@ -38,9 +41,19 @@ export default {
     async fetchData() {
       this.loading = true;
       let data = await this.$store.dispatch("fetchHome");
-      console.log(this.home, "home", data);
 
       this.loading = false;
+      this.$nextTick(() => {
+        this.$sr.reveal(".swiper  ", {
+          reset: true,
+          scale: 1
+        });
+        this.$sr.reveal(".item", {
+          reset: true,
+          useDelay: "always",
+          delay: 100
+        });
+      });
     }
   },
   components: {
@@ -62,6 +75,22 @@ export default {
 
 <style scoped lang="scss">
 .home {
+}
+.swiper {
+  .title {
+    font-size: 18px;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    text-align: center;
+    padding-left: 10px;
+    transition: color 0.4s, text-shadow 0.4s;
+  }
+}
+.swiper-slide:hover {
+  .title {
+    color: $primaryColor;
+    text-shadow: 1px 1px 1px #fff;
+  }
 }
 .swiper-slide {
   position: relative;

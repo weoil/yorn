@@ -94,7 +94,7 @@ export default {
       return this.$store.state.user.star;
     },
     record() {
-      let record = this.$store.state.user.record;
+      let record = this.$store.state.user.record.slice(0);
       record.sort((a, b) => {
         return new Date(a["data"]["date"]) < new Date(b["data"]["date"]);
       });

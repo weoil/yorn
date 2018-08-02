@@ -1,7 +1,7 @@
 import Mock from "mockjs";
 const Random = Mock.Random;
 Mock.setup({
-  timeout: "1000-3000"
+  timeout: "100-500"
 });
 Mock.mock(/list\/image\/.*\/.*/, function() {
   return Mock.mock({
@@ -11,6 +11,7 @@ Mock.mock(/list\/image\/.*\/.*/, function() {
         id: () => Random.string("lower", 18),
         title: () => Random.cparagraph(1),
         cover: () => Random.image(),
+        poster: () => Random.image(),
         date: () => Random.date(),
         lenght: () => Random.integer(5, 30),
         browseCount: () => Random.integer(1, 30)

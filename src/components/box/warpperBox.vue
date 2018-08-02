@@ -1,7 +1,7 @@
 <template>
   <div class="warpperBox">
     <slot></slot>
-    <div class="watchBottom" v-screen="inScreen" :key="name"></div>
+    <div class="watchBottom" v-screen="inBottom" :key="name"></div>
     <Loading :type="1" v-if="loading" />
   </div>
 </template>
@@ -24,7 +24,8 @@ export default {
     return {};
   },
   methods: {
-    inScreen() {
+    inBottom() {
+      console.log(this.loading);
       if (this.loading) return;
       this.$emit("bottom");
     }

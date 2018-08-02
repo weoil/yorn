@@ -27,6 +27,16 @@ export const listMixin = {
       this.$router.push(`/${pathname}/${id}`);
     }
   },
+  watch: {
+    data() {
+      this.$nextTick(() => {
+        this.$sr.reveal(".item", {
+          reset: true,
+          delay: 100
+        });
+      });
+    }
+  },
   components: {},
   beforeMount() {
     this.fetchData();

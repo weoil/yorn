@@ -6,7 +6,7 @@
     </div>
     <div slot="right" class="right">
       <div class="search" :style="``">
-        <Input placeholder="在这里搜索你感兴趣的内容" icon="ios-search" />
+        <Input placeholder="在这里搜索你感兴趣的内容" icon="ios-search" v-model="searchStr" @on-enter="search" />
       </div>
       <user-top></user-top>
 
@@ -96,12 +96,18 @@ export default {
         }
       ],
       searchWidth: 0,
-      height: 60
+      height: 60,
+      searchStr: ""
     };
   },
   methods: {
     select(name) {
       this.$router.push(`/${name}`);
+    },
+    search() {
+      if (this.searchStr) {
+        this.$router.push(`/search/${this.searchStr}/1`);
+      }
     }
   },
   components: {
